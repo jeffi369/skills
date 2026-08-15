@@ -1,8 +1,14 @@
 # image-analysis-skill
 
-本地视觉模型图片分析技能（DSH / Claude Code Skill）。对任意图片：**统一预处理（WebP 等格式转 PNG、长边缩放到 1080px）→ 调用本地 Ollama 视觉模型 → 输出结构化中文描述 + 检索标签**。全程离线、免费、无 API 费用，单张图 5~10 秒出结果。
+**给文本模型"长眼睛"。** 一个通用的本地图片分析技能：把任意图片变成**结构化中文描述 + 检索标签**，让纯文本 LLM 代理（[DSH](#关于-dshdeepseek-harness)、Claude Code、自定义 Agent）也能"看见"图片内容。
 
-在 **RTX 5080 16GB / 32GB 内存 / Windows** 上实测通过（Ollama 端口 11598）。
+**通用性**：不绑定特定硬件、路径、端口或模型——任何机器开箱即用。
+
+> **前提条件（二选一）**：用户须具备其一——
+> ① **本地视觉模型**：已安装并运行 [Ollama](https://ollama.com)，且拉取过一个具备 vision 能力的模型（如 `ollama pull llava:13b`）；
+> ② **OpenAI 兼容的视觉 API**：任意服务商（OpenAI GPT-4o、通义千问 qwen-vl、Gemini、vLLM/LM Studio 自建等），需要 API Key。
+>
+> 两种通道脚本都支持：`-Provider local`（默认）或 `-Provider openai`。全程离线免费（本地）或按 API 计费（云端）。
 
 ---
 
@@ -10,127 +16,147 @@
 
 [DeepSeek Harness（`dsh`）](https://github.com/deepseek-ai/deepseek-harness) 是 [DeepSeek AI](https://deepseek.com) 开源的智能体（Agent）工具框架：**一切皆插件**（基于 [Cordis](https://github.com/cordiverse/cordis) 架构），通过 Web UI（默认 `http://127.0.0.1:3080`，`npx @deepseek-ai/dsh web` 启动）或 CLI 驱动 AI 代理完成编程、资产管理、视觉分析等任务。
 
-本技能就是为 DSH 的**技能（Skill）机制**设计的：把文件夹放进 `~/.dsh/skills/` 后，DSH 代理在遇到读图任务（资产入库、提示词管理、截图理解等）时，会自动按本流程「预处理 → 调本地视觉模型 → 结构化输出」。目前 DSH 处于 developer preview，迭代很快，存在破坏性变更，请关注 [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)。
+本技能专为 DSH 的**技能（Skill）机制**设计：把文件夹放进 `~/.dsh/skills/` 后，DSH 代理遇到读图任务（资产入库、提示词管理、截图理解等）时，会自动按「预处理 → 本地视觉模型 → 结构化输出」执行。它同时兼容任何 Claude Code / 自定义 Agent 技能目录，也可作为独立脚本直接使用。目前 DSH 处于 developer preview，存在破坏性变更，请关注 [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)。
 
 ---
 
-## 为什么需要它
+## 它解决什么
 
-直接用视觉模型读图会遇到三个现实问题，本技能全部解决：
+直接用视觉模型读图有三个现实问题，本技能全部解决：
 
 | 问题 | 现象 | 解决 |
 |---|---|---|
 | **格式不兼容** | WebP 等格式在 llama.cpp/Ollama 直读报错 `Failed to load image or audio file` | 统一转 **PNG**（无损） |
-| **分辨率过大** | 2560×1440 直喂吃掉 **3647 tokens、119s**，还易撑爆上下文 | 长边缩放到 **1080**，token 降 80%、**快 24 倍**，质量无感知损失 |
-| **思考模式干扰** | Qwen 系列默认开思考，token 全花在推理上，正文为空 | 强制 `think: false` |
+| **分辨率过大** | 2560×1440 直喂吃掉 **3647 tokens**、119s，还易撑爆上下文 | 长边缩放到 **1080**，token 降 80%、快 24 倍，质量无感知损失 |
+| **思考模式干扰** | Qwen 系默认开思考，token 全花在推理上，正文为空 | 强制 `think: false` |
 
-## 特性
+## 环境要求（前提条件）
 
-- 🖼️ **自动预处理**：WebP/GIF/BMP/TIFF → PNG；长边 >1080 → 等比缩放（Windows 内置 WIC 实现，零依赖，失败自动回退 ffmpeg）
-- 🚀 **本地推理**：Ollama + 本地视觉模型，离线可用，无 API 费用
-- 📝 **结构化输出**：内容描述 + 元素细节 + 文字全文读出 + 3-6 个检索标签
-- 🛠️ **开箱即用**：单文件 PowerShell 脚本，无需安装任何 Python 包
-- 🔧 **可配置**：模型、端口、缩放阈值、输出长度均可调
-
-## 环境要求
-
-| 项目 | 要求 | 说明 |
+| 通道 | 必备 | 说明 |
 |---|---|---|
-| 操作系统 | Windows 10/11 | WIC 编解码（系统自带） |
-| Ollama | ≥ 0.8（实测 0.32.13） | 默认端口 **11598**（本机配置），可在脚本中改 |
-| 视觉模型 | Qwen3.6-35B-IQ3_S（推荐）等 | 需具备 `vision` 能力（`ollama show <模型> \| grep vision`） |
-| 显存 | ≥ 16GB（27B 档模型） | 大模型量化档位需能进显存 |
-| PowerShell | 5.1 / 7+ | 脚本含 Windows PowerShell 5.1 兼容写法 |
+| **local（默认）** | [Ollama](https://ollama.com) 已运行 + 一个视觉模型 | `ollama pull llava:13b`（通用默认）；推荐更强模型如 qwen3-vl 系列、Qwen3.6-35B-IQ3_S 等（`ollama show <模型>` 的 Capabilities 需含 `vision`） |
+| **openai** | OpenAI 兼容视觉 API + API Key | OpenAI / 通义千问 / Gemini / vLLM / LM Studio 等；Key 用 `-ApiKey` 或 `$env:VISION_API_KEY` |
+| 操作系统 | Windows（WIC 内置解码）；Linux/macOS 走 ffmpeg（见下） | — |
+| 内存/显存 | 本地通道需能容纳所选模型（27B 档建议 ≥16GB 显存）；API 通道无要求 | — |
 
-## 安装
-
-把整个 `image-analysis` 文件夹放到对应技能目录：
-
-```text
-DSH:          ~/.dsh/skills/image-analysis/
-Claude Code:  ~/.claude/skills/image-analysis/
-通用（任意）:  任意目录，手动执行脚本亦可
-```
-
-重启会话后技能即可被代理识别（描述中含触发词：图片分析 / 读图 / 资产入库等）。
-
-## 使用方法
-
-### 方式 A：作为 Skill 自动调用
-
-代理检测到图片分析任务时自动执行：预处理 → 分析 → 输出。
-
-### 方式 B：手动执行（复制即用）
+## 快速开始
 
 ```powershell
-# 1. 预处理
-Add-Type -AssemblyName PresentationCore
-function Convert-ImageForVision($src, $dst) {
-  $fs = [System.IO.File]::OpenRead($src)
-  $dec = [System.Windows.Media.Imaging.BitmapDecoder]::Create($fs, [System.Windows.Media.Imaging.BitmapCreateOptions]::None, [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
-  $frame = $dec.Frames[0]
-  $w = [double]$frame.PixelWidth; $h = [double]$frame.PixelHeight
-  $long = [Math]::Max($w, $h)
-  if ($long -gt 1080) { $scale = 1080.0 / $long; $tw = [int][Math]::Round($w * $scale); $th = [int][Math]::Round($h * $scale) } else { $tw = [int]$w; $th = [int]$h }
-  if ($tw -ne [int]$w -or $th -ne [int]$h) {
-    $t = New-Object System.Windows.Media.Imaging.TransformedBitmap
-    $t.BeginInit(); $t.Source = $frame; $t.Transform = New-Object System.Windows.Media.ScaleTransform ($tw/$w), ($th/$h); $t.EndInit()
-    $frame = $t
-  }
-  $enc = New-Object System.Windows.Media.Imaging.PngBitmapEncoder
-  $enc.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($frame))
-  $out = [System.IO.File]::Create($dst); $enc.Save($out); $out.Close(); $fs.Close()
-  Write-Host "OK: $($frame.PixelWidth)x$($frame.PixelHeight) -> $dst"
-}
-Convert-ImageForVision 'D:\图片\原图.webp' 'D:\图片\处理后.png'
+# 通道 A：本地 Ollama（默认）
+ollama pull llava:13b                          # 只需一次
+.\image-analysis.ps1 -ImagePath "D:\pics\photo.webp"
 
-# 2. 分析
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$img = [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('D:\图片\处理后.png'))
-$prompt = '请用中文详细描述这张图片的内容和画面元素（人物/动作/文字/形状/颜色/布局）。如果图中有文字请完整读出。最后给出 3-6 个检索标签（逗号分隔）。请具体、准确。'
-$body = @{ model = 'Qwen3.6-35B-IQ3_S:latest'; stream = $false; think = $false; options = @{ num_predict = 700 }; messages = @(@{ role='user'; content=$prompt; images = @($img) }) } | ConvertTo-Json -Depth 8
-# 注意：必须用 UTF-8 字节发送（见 FAQ 第 2 条）
-$bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-$r = Invoke-RestMethod -Uri 'http://127.0.0.1:11598/api/chat' -Method Post -ContentType 'application/json; charset=utf-8' -Body $bytes -TimeoutSec 600
-$r.message.content
+# 通道 B：OpenAI 兼容视觉 API
+$env:VISION_API_KEY = "sk-..."                 # 或 -ApiKey 参数
+.\image-analysis.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
+
+# 批量分析一个文件夹
+Get-ChildItem "D:\pics" -Include *.png,*.jpg,*.webp -Recurse | ForEach-Object {
+  .\image-analysis.ps1 -ImagePath $_.FullName
+}
 ```
 
-## 配置项
+输出示例（角色设定图）：
+
+```
+预处理 OK: 1280x714 -> 1080x602 -> D:\pics\photo_analysis.png
+模型: llava:13b | 图片 token: 738 | 输出 token: 512
+── 分析结果 ──────────────────────────────────────────
+这是一张角色设定图……（结构化描述）
+检索标签：HARUMIN, 角色设定图, 橙黄条纹泳装, 银色创可贴, 短发女性角色, 声线描述
+```
+
+## 参数与配置
+
+```powershell
+.\image-analysis.ps1 -ImagePath <必填> `
+  [-Provider local|openai] [-Model <视觉模型>] [-Endpoint <服务地址>] [-ApiKey <Key>] `
+  [-MaxEdge <长边阈值>] [-Prompt <自定义提示词>] [-MaxTokens <输出上限>] [-OutputPng <输出路径>]
+```
 
 | 参数 | 默认 | 说明 |
 |---|---|---|
-| 缩放长边阈值 | 1080px | 需要极致细节（小字号文字/密插画）可调 1536 |
-| 模型 | `Qwen3.6-35B-IQ3_S:latest` | 换模型需确认其 `vision` 能力 |
-| Ollama 端口 | 11598 | 非默认 11434，按本机实际修改 |
-| `think` | `false` | 必须关思考，否则正文为空 |
-| `num_predict` | 700 | 输出上限，长图描述可调大 |
+| `-ImagePath` | 必填 | 输入图片 |
+| `-Provider` | `local` | `local`（Ollama）或 `openai`（OpenAI 兼容 API） |
+| `-Model` | `llava:13b`（local）/ `gpt-4o-mini`（openai） | 视觉模型名 |
+| `-Endpoint` | `http://127.0.0.1:11434`（local）/ `https://api.openai.com/v1`（openai） | 服务地址；其他兼容服务自行指定 |
+| `-ApiKey` | 空 | 仅 `openai` 需要 |
+| `-MaxEdge` | `1080` | 长边缩放阈值（px）；细节优先可调 `1536` |
+| `-Prompt` | 内置 | 自定义分析提示词 |
+| `-MaxTokens` | `700` | 输出 token 上限 |
+| `-OutputPng` | 自动 | 预处理产物路径（默认 `<原名>_analysis.png`） |
 
-## 实测结果（本机 5080 16GB）
+环境变量覆盖（便于 DSH/CI 统一配置）：
+
+```powershell
+$env:VISION_PROVIDER = "local"            # local | openai
+$env:VISION_MODEL = "qwen3-vl:7b"
+$env:VISION_ENDPOINT = "http://127.0.0.1:11598"
+$env:VISION_API_KEY = "sk-..."            # openai 通道
+```
+
+优先级：**命令行参数 > 环境变量 > 默认值**。
+
+常见 OpenAI 兼容 Endpoint 示例：
+
+| 服务商 | Endpoint | 示例模型 |
+|---|---|---|
+| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini` / `gpt-4o` |
+| 通义千问（DashScope） | `https://dashscope.aliyuncs.com/compatible-mode/v1` | `qwen-vl-max` / `qwen-vl-plus` |
+| Gemini（OpenAI 兼容） | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-2.0-flash` |
+| 自建 vLLM / LM Studio | `http://127.0.0.1:8000/v1` 等 | 按部署配置 |
+
+## 工作原理
+
+1. **预处理**：WIC（Windows 内置）解码任意格式 → 输出无损 PNG；长边 > 阈值时等比缩放（默认 1080）。WIC 不可用时自动回退 `ffmpeg`。
+2. **分析（双通道）**：
+   - `local`：base64 图片 → Ollama `/api/chat`（`think:false` 关思考）；
+   - `openai`：data URI 图片 → OpenAI 兼容 `/chat/completions`（`Authorization: Bearer <Key>`）。
+3. **编码修复**：请求体以 **UTF-8 字节**发送（Windows PowerShell 5.1 的 `Invoke-RestMethod -Body <string>` 默认 ASCII 编码，中文会被替换成 `?`，导致模型误判"乱码"——这是本技能踩过并已修复的坑，脚本内已注释）。
+
+## 跨平台说明
+
+- **Windows**：WIC 内置，零依赖；ffmpeg 兜底（`winget install ffmpeg`）。
+- **Linux/macOS**：无 WIC，直接用 ffmpeg 预处理：`ffmpeg -i <src> -vf "scale='min(1080,iw)':-2" <dst>.png`，再执行脚本的分析部分（或把脚本里的 `Convert-ImageForVision` 替换为 ffmpeg 调用）。
+
+## 常见问题（FAQ）
+
+**1. 为什么长边 1080？**
+视觉模型按 patch 编码图像，分辨率过高时 token 爆炸（2560 宽约 3647 tokens）、上下文被图片吃满、速度骤降；1080 是信息保留/上下文占用/速度的平衡点。需要极致细节（小字号文字、密插画）可调 1536（token 约翻倍）。
+
+**2. 为什么必须转 PNG？**
+llama.cpp/Ollama 对 WebP 解码兼容性差，实测直读报 `Failed to load image or audio file`；PNG 无损且稳定。
+
+**3. 为什么请求体要显式 UTF-8？**
+Windows PowerShell 5.1 `Invoke-RestMethod -Body <string>` 默认 ASCII 编码，中文变 `?`，模型把提示词误判为"乱码/问号"并跑偏。必须 `[System.Text.Encoding]::UTF8.GetBytes($body)` 后以字节发送（脚本已内置）。
+
+**4. 模型很慢怎么办？**
+`ollama ps` 看 PROCESSOR 列：含 CPU 百分比说明显存不够、部分层跑在 CPU。把模型的 `num_ctx` 压到 16384~32768（128K 上下文是显存杀手），或换更小的量化档（如 Q3_K_M/IQ3_XXS）。
+
+**5. 想用别的模型？**
+确认模型支持视觉（`ollama show <模型>` Capabilities 含 `vision`），`-Model` 指定即可。
+
+**6. 脚本报"意外的标记/字符串未结束"？**
+脚本内包含中文，Windows PowerShell 5.1 要求 **.ps1 以 UTF-8 带 BOM 保存**，否则中文按 GBK 解析会乱码并破坏语法。本仓库的 `image-analysis.ps1` 已带 BOM；自行编辑后请保持 BOM（PowerShell 7 无此限制）。
+
+## 实测记录（开发者机器：RTX 5080 16GB / 32GB，Ollama 11598）
 
 | 测试图 | 预处理 | 耗时 | 结果 |
 |---|---|---|---|
 | WebP 角色设定图 1280×714 | →PNG 1080×602 | 7.1s | 文字/服装/特征全读出 + 6 标签 ✅ |
 | 竖屏截图 335×773 | 无需缩放 | 19.1s | 界面元素 + 提示词原文逐字读出 ✅ |
 | 9.85MB 大图 5404×3040 | →1080×608 | 40.8s | 角色设定全读出 + 6 标签 ✅ |
-| 天宫大图 2560×1440（原图直喂） | 无 | 119s / 3647 tokens | token 爆炸、慢 |
+| 天宫大图 2560×1440（直喂） | 无 | 119s / 3647 tokens | token 爆炸、慢 |
 | 天宫大图（缩放后） | →1080×608 | 4.9s / 713 tokens | 质量无感知损失 ✅ |
 
-## FAQ
+## 目录结构
 
-**1. 为什么必须转 PNG？**
-llama.cpp/Ollama 对 WebP 解码兼容性差，实测直读报 `Failed to load image or audio file`；PNG 无损且稳定。
-
-**2. 为什么中文请求体要显式 UTF-8 编码？**
-Windows PowerShell 5.1 的 `Invoke-RestMethod -Body <string>` 默认按 ASCII 编码，中文会变成 `?`，模型会把提示词误判为"乱码/问号"并跑偏。必须 `[System.Text.Encoding]::UTF8.GetBytes($body)` 后以字节发送。
-
-**3. 为什么长边 1080？**
-视觉模型按 patch 编码图像，分辨率过高时 token 数爆炸（2560 宽约 3647 tokens）、上下文被图片吃满、速度骤降；1080 是"信息保留 / 上下文占用 / 速度"三者的平衡点，实测缩放后读图质量无感知损失。
-
-**4. 模型很慢怎么办？**
-先看 `ollama ps` 的 PROCESSOR 列。若含 CPU 百分比，说明显存不够、部分层跑在 CPU：把模型的 `num_ctx` 压到 16384~32768（128K 上下文是显存杀手，16GB 显存下会导致 ~24% 层进 CPU、速度掉到 ~9 tok/s）。
-
-**5. 想用别的模型？**
-确认模型支持视觉（`ollama show <模型>` 的 Capabilities 含 `vision`），并调整 `model` 字段即可；建议显存能完整容纳的量化档位。
+```text
+image-analysis/
+├── SKILL.md              技能定义（DSH / Claude Code 技能元数据 + 流程）
+├── README.md             本文档
+└── image-analysis.ps1    可执行脚本（参数化，跨机器通用）
+```
 
 ## License
 
