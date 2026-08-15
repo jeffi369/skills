@@ -6,6 +6,14 @@
 
 ---
 
+## 关于 DSH（DeepSeek Harness）
+
+[DeepSeek Harness（`dsh`）](https://github.com/deepseek-ai/deepseek-harness) 是 [DeepSeek AI](https://deepseek.com) 开源的智能体（Agent）工具框架：**一切皆插件**（基于 [Cordis](https://github.com/cordiverse/cordis) 架构），通过 Web UI（默认 `http://127.0.0.1:3080`，`npx @deepseek-ai/dsh web` 启动）或 CLI 驱动 AI 代理完成编程、资产管理、视觉分析等任务。
+
+本技能就是为 DSH 的**技能（Skill）机制**设计的：把文件夹放进 `~/.dsh/skills/` 后，DSH 代理在遇到读图任务（资产入库、提示词管理、截图理解等）时，会自动按本流程「预处理 → 调本地视觉模型 → 结构化输出」。目前 DSH 处于 developer preview，迭代很快，存在破坏性变更，请关注 [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)。
+
+---
+
 ## 为什么需要它
 
 直接用视觉模型读图会遇到三个现实问题，本技能全部解决：
