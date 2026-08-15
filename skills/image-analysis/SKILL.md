@@ -1,11 +1,11 @@
 ---
 name: image-analysis
-description: 图片分析：给文本模型长眼睛。Use when analyzing an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image): first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags. Prerequisite: the user must have either a local vision model or a vision API key.
+description: 给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when DSH needs to analyze an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image): first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags that get injected into the text model's context. Prerequisite: the user must have either a local vision model or a vision API key.
 ---
 
-# 图片分析（给文本模型长眼睛）
+# 图片分析（在 DSH 里给文本模型长眼睛）
 
-把任意图片变成**结构化文本描述 + 检索标签**，让纯文本 LLM 代理（DSH、Claude Code、自定义 Agent 等）"看见"图片。
+把任意图片变成**结构化文本描述 + 检索标签**，让 DSH（DeepSeek Harness）里的文本模型（DeepSeek 等，也支持换成其他文本模型）"看见"图片、基于图片内容推理。
 
 > **前提条件（二选一）**：用户须具备其一——① **本地视觉模型**（Ollama 已装并运行 + 一个 vision 能力的模型）；或 ② **OpenAI 兼容的视觉 API**（任意服务商，需 API Key）。两种通道脚本都支持，`-Provider local`（默认）或 `-Provider openai`。
 
