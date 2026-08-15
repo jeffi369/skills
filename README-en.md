@@ -12,6 +12,10 @@ Self-developed Agent Skills for [DeepSeek Harness (DSH)](https://github.com/deep
 |---|---|---|
 | [image-analysis](skills/image-analysis/) | Image → structured text description + retrieval tags (local Ollama or OpenAI-compatible vision API) | [中文](skills/image-analysis/README-cn.md) · [English](skills/image-analysis/README-en.md) |
 
+![architecture](skills/image-analysis/docs/architecture.png)
+
+![benchmark (measured)](skills/image-analysis/docs/benchmark.png)
+
 ## Install into DSH
 
 Put the skill folder into DSH's skill directory:

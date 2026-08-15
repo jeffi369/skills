@@ -6,3 +6,9 @@
 
 - [中文说明书](README-cn.md)
 - [English README](README-en.md)
+
+![架构图](docs/architecture.png)
+
+![性能对比（实测数据）](docs/benchmark.png)
+
+> 主题：在 DeepSeek Harness 里给 DeepSeek（或任意文本模型）装上一双"眼睛"——图片 → 视觉模型转文字 → 文本模型"看见"。

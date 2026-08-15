@@ -12,6 +12,10 @@
 |---|---|---|
 | [image-analysis](skills/image-analysis/) | 图片 → 结构化文字描述 + 检索标签（本地 Ollama 或 OpenAI 兼容视觉 API） | [中文](skills/image-analysis/README-cn.md) · [English](skills/image-analysis/README-en.md) |
 
+![架构图](skills/image-analysis/docs/architecture.png)
+
+![性能对比（实测数据）](skills/image-analysis/docs/benchmark.png)
+
 ## 安装到 DSH
 
 把技能文件夹放进 DSH 技能目录：
