@@ -38,11 +38,11 @@ Image / graphic file → Skill → local vision model or vision API → structur
 
 ### Architecture
 
-![Architecture](skills/image-analysis/docs/architecture.png)
+![Architecture](skills/image-analysis/docs/architecture-en.png)
 
 ### Measured performance (RTX 5080 16GB)
 
-![Benchmark](skills/image-analysis/docs/benchmark.png)
+![Benchmark](skills/image-analysis/docs/benchmark-en.png)
 
 ---
 

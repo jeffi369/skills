@@ -8,7 +8,7 @@
 
 > **Image → vision model converts it to text → DeepSeek "sees"**
 
-![architecture](docs/architecture.png)
+![architecture](docs/architecture-en.png)
 
 With this skill installed, whenever the DSH agent encounters an image (screenshot, photo, illustration, character sheet, AI-generated image...), it automatically "opens its eyes": a local vision model translates the image into **structured text description + retrieval tags**, which are injected into DeepSeek's context — DeepSeek can then understand, reason, and answer based on the image content.
 
@@ -71,7 +71,7 @@ Environment variables (`VISION_MODEL` / `VISION_ENDPOINT` / `VISION_API_KEY` / `
 - Local vision front-end `Qwen3.6-35B-IQ3_S`: **100% GPU, 118 tok/s** (the only full-speed option);
 - Preprocessing gain: large image tokens drop from **3647 to 713** (-80%), 24x faster, no perceptible quality loss.
 
-![benchmark](docs/benchmark.png)
+![benchmark](docs/benchmark-en.png)
 
 ## Prerequisites (either)
 
