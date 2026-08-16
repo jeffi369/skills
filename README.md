@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👁️ Agent Skills — DeepSeek Harness Skill Library
+# 👁️ 给 DeepSeek 装眼睛 · Give DeepSeek Eyes
 
 **Give text models eyes.** Self-developed Agent Skills for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness), organized per the [Agent Skills standard](https://agentskills.io).
 

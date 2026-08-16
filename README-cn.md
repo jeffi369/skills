@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👁️ Agent Skills — DeepSeek Harness 技能库
+# 👁️ 给 DeepSeek 装眼睛 · DeepSeek Harness 技能库
 
 **给文本模型长眼睛。** 为 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 自研的 Agent Skills，按 [Agent Skills 标准](https://agentskills.io) 组织。
 
