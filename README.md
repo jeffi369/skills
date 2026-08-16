@@ -1,20 +1,20 @@
 <div align="center">
 
-# 👁️ 给 DeepSeek 装眼睛 · Give DeepSeek Eyes
+# 👁️ Give DeepSeek Eyes
 
-**给 DeepSeek 装上一双"眼睛"的 Agent Skill —— 让 DSH 里的文本模型看得见图片。**
+**Give text models eyes — a [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) Skill that lets DeepSeek read images and graphic files.**
 
-Give text models eyes — self-developed Agent Skills for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness), organized per the [Agent Skills standard](https://agentskills.io).
+The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible vision API** to convert images and graphic files into structured text, so DeepSeek can read and reason about them. Organized per the [Agent Skills standard](https://agentskills.io).
 
-**中文版**：[README-cn.md](README-cn.md) · 中文说明书
+**中文版**：[README-cn.md](README-cn.md) · 中文说明
 
-**DSH 生态关联** · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · topic [`dsh-plugin`](https://github.com/topics/dsh-plugin) · [Agent Skills](https://agentskills.io)
+**DSH Ecosystem** · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · topic [`dsh-plugin`](https://github.com/topics/dsh-plugin) · [Agent Skills](https://agentskills.io)
 
 ---
 
 > **Image → vision model converts it to text → the text model "sees"**
 
-[**image-analysis**](skills/image-analysis/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
+[**image-analysis**](skills/image-analysis/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
 
 </div>
 
@@ -34,7 +34,7 @@ Image / graphic file → Skill → local vision model or vision API → structur
 
 | Skill | What it does | Manuals |
 |---|---|---|
-| [**image-analysis**](skills/image-analysis/) | Image → structured Chinese description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [中文](skills/image-analysis/README-cn.md) · [English](skills/image-analysis/README-en.md) |
+| [**image-analysis**](skills/image-analysis/) | Image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/image-analysis/README-en.md) · [中文](skills/image-analysis/README-cn.md) |
 
 ### Architecture
 
@@ -69,6 +69,6 @@ Restart the DSH session — the agent automatically "opens its eyes" when it mee
 
 <div align="center">
 
-*给 DeepSeek 装眼睛 · Built for the DeepSeek Harness (DSH) ecosystem — topic [`dsh-plugin`](https://github.com/topics/dsh-plugin)*
+*Give DeepSeek Eyes · Built for the DeepSeek Harness (DSH) ecosystem — topic [`dsh-plugin`](https://github.com/topics/dsh-plugin)*
 
 </div>
