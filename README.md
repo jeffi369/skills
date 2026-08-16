@@ -20,6 +20,16 @@ Give text models eyes — self-developed Agent Skills for [DeepSeek Harness (DSH
 
 ---
 
+## ⚙️ How it works
+
+The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible vision API** to convert images and graphic files — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images — into structured text. DeepSeek then reads that text, which is exactly how it gains the ability to "read" images and graphic files.
+
+```text
+Image / graphic file → Skill → local vision model or vision API → structured text → DeepSeek reads & reasons
+```
+
+---
+
 ## ✨ The Skill
 
 | Skill | What it does | Manuals |
