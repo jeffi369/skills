@@ -2,9 +2,13 @@
 
 # 👁️ 给 DeepSeek 装眼睛 · Give DeepSeek Eyes
 
-**Give text models eyes.** Self-developed Agent Skills for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness), organized per the [Agent Skills standard](https://agentskills.io).
+**给 DeepSeek 装上一双"眼睛"的 Agent Skill —— 让 DSH 里的文本模型看得见图片。**
+
+Give text models eyes — self-developed Agent Skills for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness), organized per the [Agent Skills standard](https://agentskills.io).
 
 **中文版**：[README-cn.md](README-cn.md) · 中文说明书
+
+**DSH 生态关联** · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · topic [`dsh-plugin`](https://github.com/topics/dsh-plugin) · [Agent Skills](https://agentskills.io)
 
 ---
 
@@ -32,6 +36,10 @@
 
 ---
 
+## 🔗 DeepSeek Harness Ecosystem
+
+This repository is part of the **DeepSeek Harness plugin ecosystem** — find it under the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic, alongside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) itself. Drop a skill folder into `~/.dsh/skills/`, and the DSH agent automatically "opens its eyes" whenever it meets an image, injecting the image description into the text model's context.
+
 ## 🚀 Install into DSH
 
 Put the skill folder into DSH's skill directory:
@@ -51,6 +59,6 @@ Restart the DSH session — the agent automatically "opens its eyes" when it mee
 
 <div align="center">
 
-*Built for the DeepSeek Harness ecosystem · DeepSeek Harness 技能库*
+*给 DeepSeek 装眼睛 · Built for the DeepSeek Harness (DSH) ecosystem — topic [`dsh-plugin`](https://github.com/topics/dsh-plugin)*
 
 </div>

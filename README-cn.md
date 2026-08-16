@@ -2,9 +2,13 @@
 
 # 👁️ 给 DeepSeek 装眼睛 · DeepSeek Harness 技能库
 
-**给文本模型长眼睛。** 为 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 自研的 Agent Skills，按 [Agent Skills 标准](https://agentskills.io) 组织。
+**给 DeepSeek 装上一双"眼睛"的 Agent Skill —— 让 DSH 里的文本模型看得见图片。**
+
+给文本模型长眼睛：为 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 自研的 Agent Skills，按 [Agent Skills 标准](https://agentskills.io) 组织。
 
 **English**：[README.md](README.md) · English README
+
+**DSH 生态关联** · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · 主题 [`dsh-plugin`](https://github.com/topics/dsh-plugin) · [Agent Skills](https://agentskills.io)
 
 ---
 
@@ -32,6 +36,10 @@
 
 ---
 
+## 🔗 与 DeepSeek Harness 的关联
+
+本仓库属于 **DeepSeek Harness 插件生态**：在 GitHub 主题 [`dsh-plugin`](https://github.com/topics/dsh-plugin) 下可以找到本仓库，也能找到 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 本身。把技能文件夹放进 `~/.dsh/skills/`，DSH 代理遇到图片就会自动"睁眼"，把图片描述注入文本模型的上下文。
+
 ## 🚀 安装到 DSH
 
 把技能文件夹放进 DSH 技能目录：
@@ -51,6 +59,6 @@
 
 <div align="center">
 
-*为 DeepSeek Harness 生态而建 · DeepSeek Harness Skill Library*
+*给 DeepSeek 装眼睛 · 为 DeepSeek Harness 生态而建（主题 [`dsh-plugin`](https://github.com/topics/dsh-plugin)）*
 
 </div>
