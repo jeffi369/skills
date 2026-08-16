@@ -1,6 +1,6 @@
 ---
-name: image-analysis
-description: 给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when DSH needs to analyze an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image): first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags that get injected into the text model's context. Prerequisite: the user must have either a local vision model or a vision API key.
+name: deepseek-eyes
+description: deepseek-eyes：协助文本 AI 模型做图片分析——给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when DSH needs to analyze an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image): first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags that get injected into the text model's context. Prerequisite: the user must have either a local vision model or a vision API key.
 ---
 
 # 图片分析（在 DSH 里给文本模型长眼睛）
@@ -19,19 +19,19 @@ description: 给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when
 
 ## 执行方式
 
-### 方式 A（推荐）：调用同目录脚本 `image-analysis.ps1`
+### 方式 A（推荐）：调用同目录脚本 `deepseek-eyes.ps1`
 
 ```powershell
 # 单张图：本地 Ollama（默认通道）
-& '...\image-analysis.ps1' -ImagePath '<图片路径>'
+& '...\deepseek-eyes.ps1' -ImagePath '<图片路径>'
 
 # 单张图：OpenAI 兼容视觉 API
 $env:VISION_API_KEY = '<你的Key>'          # 或 -ApiKey 参数
-& '...\image-analysis.ps1' -ImagePath '<图片路径>' -Provider openai -Model 'gpt-4o-mini'
+& '...\deepseek-eyes.ps1' -ImagePath '<图片路径>' -Provider openai -Model 'gpt-4o-mini'
 
 # 批量：对文件夹内所有图片循环调用
 Get-ChildItem '<文件夹>' -Include *.png,*.jpg,*.webp -Recurse | ForEach-Object {
-  & '...\image-analysis.ps1' -ImagePath $_.FullName
+  & '...\deepseek-eyes.ps1' -ImagePath $_.FullName
 }
 ```
 

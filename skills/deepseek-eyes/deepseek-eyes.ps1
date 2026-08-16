@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     图片分析：预处理（任意格式转 PNG、长边缩放）+ 视觉模型描述 + 检索标签。
     给文本型 LLM 代理"长眼睛"：把图片转成结构化文本描述。
@@ -46,16 +46,16 @@
 
 .EXAMPLE
     # 本地 Ollama
-    .\image-analysis.ps1 -ImagePath "D:\pics\photo.webp"
+    .\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.webp"
 
 .EXAMPLE
     # 本地 Ollama（自定义端口/模型）
-    .\image-analysis.ps1 -ImagePath "D:\pics\photo.png" -Model "qwen3-vl:7b" -Endpoint "http://127.0.0.1:11598"
+    .\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.png" -Model "qwen3-vl:7b" -Endpoint "http://127.0.0.1:11598"
 
 .EXAMPLE
     # OpenAI 兼容 API
     $env:VISION_API_KEY = "sk-..."
-    .\image-analysis.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
+    .\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
 #>
 param(
   [Parameter(Mandatory=$true)][string]$ImagePath,

@@ -14,7 +14,7 @@ The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible visi
 
 > **Image → vision model converts it to text → the text model "sees"**
 
-[**image-analysis**](skills/image-analysis/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
+[**deepseek-eyes**](skills/deepseek-eyes/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
 
 </div>
 
@@ -34,15 +34,15 @@ Image / graphic file → Skill → local vision model or vision API → structur
 
 | Skill | What it does | Manuals |
 |---|---|---|
-| [**image-analysis**](skills/image-analysis/) | Image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/image-analysis/README-en.md) · [中文](skills/image-analysis/README-cn.md) |
+| [**deepseek-eyes**](skills/deepseek-eyes/) | Image analysis for text AI models: image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/deepseek-eyes/README-en.md) · [中文](skills/deepseek-eyes/README-cn.md) |
 
 ### Architecture
 
-![Architecture](skills/image-analysis/docs/architecture-en.png)
+![Architecture](skills/deepseek-eyes/docs/architecture-en.png)
 
 ### Measured performance (RTX 5080 16GB)
 
-![Benchmark](skills/image-analysis/docs/benchmark-en.png)
+![Benchmark](skills/deepseek-eyes/docs/benchmark-en.png)
 
 ---
 
@@ -55,12 +55,12 @@ This repository is part of the **DeepSeek Harness plugin ecosystem** — find it
 Put the skill folder into DSH's skill directory:
 
 ```text
-~/.dsh/skills/image-analysis/
+~/.dsh/skills/deepseek-eyes/
 ```
 
 Restart the DSH session — the agent automatically "opens its eyes" when it meets an image, and injects the image description into the text model's context.
 
-## ✅ Prerequisites (for image-analysis)
+## ✅ Prerequisites (for deepseek-eyes)
 
 1. **Local vision model**: [Ollama](https://ollama.com) + `ollama pull llava:13b` (or any vision model)
 2. or **OpenAI-compatible vision API** + API key

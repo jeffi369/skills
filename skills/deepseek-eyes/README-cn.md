@@ -1,6 +1,6 @@
-# image-analysis-skill
+# deepseek-eyes
 
-## 主题：给 DeepSeek Harness 里的文本模型长眼睛
+## 主题：协助文本 AI 模型做图片分析——给 DeepSeek Harness 里的文本模型长眼睛
 
 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 是 [DeepSeek AI](https://deepseek.com) 开源的智能体框架（一切皆插件）。DSH 里的文本模型——默认是 **DeepSeek**——只能读文字，**看不到图片**，这是它最大的能力缺口。
 
@@ -16,10 +16,10 @@
 
 ## 在 DeepSeek Harness 里安装
 
-把 `image-analysis` 文件夹放进 DSH 的技能目录：
+把 `deepseek-eyes` 文件夹放进 DSH 的技能目录：
 
 ```text
-~/.dsh/skills/image-analysis/
+~/.dsh/skills/deepseek-eyes/
 ```
 
 重启 DSH 会话，技能即被代理识别并自动启用。
@@ -37,11 +37,11 @@
 
 ```powershell
 # 本地"眼睛"（Ollama + 视觉模型，默认 llava:13b）
-.\image-analysis.ps1 -ImagePath "D:\pics\photo.webp"
+.\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.webp"
 
 # 云端"眼睛"（OpenAI 兼容视觉 API，如 gpt-4o / qwen-vl）
 $env:VISION_API_KEY = "sk-..."
-.\image-analysis.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
+.\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
 ```
 
 输出示例（直接注入 DeepSeek 上下文）：
@@ -80,4 +80,4 @@ $env:VISION_API_KEY = "sk-..."
 
 ---
 
-实现细节、全部参数与常见问题见 `SKILL.md` 与 `image-analysis.ps1`。
+实现细节、全部参数与常见问题见 `SKILL.md` 与 `deepseek-eyes.ps1`。

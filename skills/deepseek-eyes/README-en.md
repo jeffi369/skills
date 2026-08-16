@@ -1,6 +1,6 @@
-# image-analysis-skill
+# deepseek-eyes
 
-## Theme: Give Text Models Eyes in DeepSeek Harness
+## Theme: Image analysis for text AI models — Give Text Models Eyes in DeepSeek Harness
 
 [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) is the open-source agent harness by [DeepSeek AI](https://deepseek.com) — everything is a plugin. The text model inside DSH — **DeepSeek** by default — can only read text. **It cannot see images.** That is its biggest capability gap.
 
@@ -16,10 +16,10 @@ With this skill installed, whenever the DSH agent encounters an image (screensho
 
 ## Install in DeepSeek Harness
 
-Put the `image-analysis` folder into DSH's skill directory:
+Put the `deepseek-eyes` folder into DSH's skill directory:
 
 ```text
-~/.dsh/skills/image-analysis/
+~/.dsh/skills/deepseek-eyes/
 ```
 
 Restart the DSH session and the skill is picked up and enabled automatically.
@@ -37,11 +37,11 @@ Restart the DSH session and the skill is picked up and enabled automatically.
 
 ```powershell
 # Local "eyes" (Ollama + vision model, default llava:13b)
-.\image-analysis.ps1 -ImagePath "D:\pics\photo.webp"
+.\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.webp"
 
 # Cloud "eyes" (OpenAI-compatible vision API, e.g. gpt-4o / qwen-vl)
 $env:VISION_API_KEY = "sk-..."
-.\image-analysis.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
+.\deepseek-eyes.ps1 -ImagePath "D:\pics\photo.png" -Provider openai -Model "gpt-4o-mini"
 ```
 
 Example output (injected directly into DeepSeek's context):
@@ -80,4 +80,4 @@ Environment variables (`VISION_MODEL` / `VISION_ENDPOINT` / `VISION_API_KEY` / `
 
 ---
 
-Implementation details, full parameters and FAQ: see `SKILL.md` and `image-analysis.ps1`.
+Implementation details, full parameters and FAQ: see `SKILL.md` and `deepseek-eyes.ps1`.
