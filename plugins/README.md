@@ -12,6 +12,9 @@ SuperMate Harness System
  └── plugins/  → 插件层（系统级：模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 
+## 官方插件索引
+[官方基本插件（deepseek-ai/deepseek-harness，只选官方）](official-dsh-plugins.md)
+
 ## 插件清单（现状与规划）
 
 | 插件 | 现状 | 位置/说明 |
