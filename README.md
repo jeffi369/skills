@@ -26,8 +26,8 @@ A self-contained agent system built on DSH's *"everything is a plugin"* philosop
 SuperMate Harness System
  ├── skills/                        → Skill layer (task-level: how-to)
  │    ├── Deepseek-eyes/             👁️ vision skill (Ollama)
- │    ├── MiniMax h3-video-producer/ 🎬 local H3 video production
- │    ├── Supermate/                 🤖 agent identity (capability matrix / plugin protocol / review template)
+ │    ├── MiniMax h3-video-producer/
+ │    ├── Supermate/
  │    └── DSH Official/              official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
  └── plugins/                        → Plugin layer (system-level: can-do)
       ├── Supermate/                 in-house plugins (planned; core enhancements = closed-source commercial)
@@ -42,8 +42,6 @@ SuperMate Harness System
 | Skill | What it does |
 |-------|--------------|
 | [**Deepseek-eyes**](skills/Deepseek-eyes/) | 👁️ Give text models eyes — local vision (Ollama) / OpenAI-compatible vision API → structured text |
-| [**MiniMax h3-video-producer**](skills/MiniMax%20h3-video-producer/) | 🎬 Local end-to-end H3 video production: storyboard → H3 prompts → segments → compose (3 modes) |
-| [**Supermate identity**](skills/Supermate/) | 🤖 Agent identity: capability matrix / plugin invocation protocol / review template (A4) |
 
 **Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
 
