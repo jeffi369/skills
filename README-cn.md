@@ -24,17 +24,18 @@
 
 ```
 SuperMate Harness System
- ├── skills/Supermate/            → Skill 层（任务级：教"怎么做"）
- │    ├── Deepseek-eyes/           👁️ 视觉 skill（Ollama）
- │    ├── MiniMax h3-video-producer/  🎬 本地 H3 完整视频生产
- │    ├── SKILL.md                 🤖 智能体身份（能力矩阵/插件调用协议/复盘模板）
- │    └── DSH Official/            官方技能（deepseek-ai · 13 个 · Apache-2.0 fork 拷贝）
- └── plugins/                      → 插件层（系统级：能"做什么"）
-      ├── Supermate/               自研插件（规划中；核心增强=闭源商业层）
-      ├── DSH Official/            官方插件（deepseek-ai · 49 族 · fork 拷贝）
-      │    ├── packages/           官方插件源码（随仓库自带）
+ ├── skills/                        → Skill 层（任务级：教"怎么做"）
+ │    ├── Supermate/                原创技能
+ │    │    ├── Deepseek-eyes/        👁️ 视觉 skill（Ollama）
+ │    │    ├── MiniMax h3-video-producer/  🎬 本地 H3 完整视频生产
+ │    │    └── SKILL.md              🤖 智能体身份（能力矩阵/插件调用协议/复盘模板）
+ │    └── DSH Official/             官方技能（deepseek-ai · 13 个 · Apache-2.0 fork 拷贝）
+ └── plugins/                        → 插件层（系统级：能"做什么"）
+      ├── Supermate/                自研插件（规划中；核心增强=闭源商业层）
+      ├── DSH Official/             官方插件（deepseek-ai · 49 族 · fork 拷贝）
+      │    ├── packages/            官方插件源码（随仓库自带）
       │    ├── README.md · NOTICE.md
-      └── README.md                插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
+      └── README.md                 插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 
 ### ✨ 原创技能
@@ -45,7 +46,7 @@ SuperMate Harness System
 | [**MiniMax h3-video-producer**](skills/Supermate/MiniMax%20h3-video-producer/) | 🎬 本地端到端 H3 视频生产：文案分镜 → H3 提示词 → 逐段生成 → 合成（三模式） |
 | [**Supermate 身份**](skills/Supermate/) | 🤖 智能体身份：能力矩阵 / 插件调用协议 / 复盘模板（A4） |
 
-**官方内容随仓库自带**——官方 13 技能 + 官方 49 族插件（deepseek-ai，Apache-2.0，带 NOTICE 归属声明）：[skills/Supermate/DSH Official](skills/Supermate/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/)。
+**官方内容随仓库自带**——官方 13 技能 + 官方 49 族插件（deepseek-ai，Apache-2.0，带 NOTICE 归属声明）：[skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/)。
 
 ---
 

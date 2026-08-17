@@ -1,9 +1,9 @@
 # NOTICE — 官方技能归属声明（Apache-2.0）
 
-本目录（`skills/Supermate/DSH Official/`）下的技能文件**原样复制**自官方项目：
+本目录（`skills/DSH Official/`）下的技能文件**原样复制**自官方项目：
 
 - **来源**：[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
-- **协议**：Apache License 2.0（含专利条款），见仓库根目录 [LICENSE](../../../LICENSE)
+- **协议**：Apache License 2.0（含专利条款），见仓库根目录 [LICENSE](../../LICENSE)
 - **复制方式**：完整目录复制（含 SKILL.md 与配套文件 openai.yaml/examples.md/encode_gif.py 等），未做修改
 - **拷贝时间**：2026-08（仓库主分支）
 

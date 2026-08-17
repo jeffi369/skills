@@ -24,17 +24,18 @@ A self-contained agent system built on DSH's *"everything is a plugin"* philosop
 
 ```
 SuperMate Harness System
- ├── skills/Supermate/            → Skill layer (task-level: how-to)
- │    ├── Deepseek-eyes/           👁️ vision skill (Ollama)
- │    ├── MiniMax h3-video-producer/  🎬 local H3 video production
- │    ├── SKILL.md                 🤖 agent identity (capability matrix / plugin protocol / review template)
- │    └── DSH Official/            official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
- └── plugins/                      → Plugin layer (system-level: can-do)
-      ├── Supermate/               in-house plugins (planned; core enhancements = closed-source commercial)
-      ├── DSH Official/            official plugins (deepseek-ai · 49 families · fork copy)
-      │    ├── packages/           official plugin source (ships with the repo)
+ ├── skills/                        → Skill layer (task-level: how-to)
+ │    ├── Supermate/                 original skills
+ │    │    ├── Deepseek-eyes/        👁️ vision skill (Ollama)
+ │    │    ├── MiniMax h3-video-producer/  🎬 local H3 video production
+ │    │    └── SKILL.md              🤖 agent identity (capability matrix / plugin protocol / review template)
+ │    └── DSH Official/              official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
+ └── plugins/                        → Plugin layer (system-level: can-do)
+      ├── Supermate/                 in-house plugins (planned; core enhancements = closed-source commercial)
+      ├── DSH Official/              official plugins (deepseek-ai · 49 families · fork copy)
+      │    ├── packages/             official plugin source (ships with the repo)
       │    ├── README.md · NOTICE.md
-      └── README.md                plugin catalog (model / memory / schedule / tools / sandbox / eval / UI)
+      └── README.md                  plugin catalog (model / memory / schedule / tools / sandbox / eval / UI)
 ```
 
 ### ✨ Original Skills
@@ -45,7 +46,7 @@ SuperMate Harness System
 | [**MiniMax h3-video-producer**](skills/Supermate/MiniMax%20h3-video-producer/) | 🎬 Local end-to-end H3 video production: storyboard → H3 prompts → segments → compose (3 modes) |
 | [**Supermate identity**](skills/Supermate/) | 🤖 Agent identity: capability matrix / plugin invocation protocol / review template (A4) |
 
-**Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/Supermate/DSH Official](skills/Supermate/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
+**Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
 
 ---
 
