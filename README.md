@@ -1,12 +1,14 @@
 <div align="center">
 
-# 👁️ Give DeepSeek Eyes
+# 🧩 SuperMate Harness System
+
+**"Everything is a plugin" — a true agent assembled from the [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) plugin architecture.**
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
+[![MiniMax H3](https://img.shields.io/badge/topic-minimax--h3-8b5cf6)](https://github.com/topics/minimax-h3)
 
-**Give text models eyes — a [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) Skill that lets DeepSeek read images and graphic files.**
-
-The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible vision API** to convert images and graphic files into structured text, so DeepSeek can read and reason about them. Organized per the [Agent Skills standard](https://agentskills.io).
+**Cloud inspiration · Local controllability · Unified local/cloud tools** — 天人合一（heaven–human unity: cloud inspiration + local control + unified tools）.
 
 **中文版**：[README-cn.md](README-cn.md) · 中文说明
 
@@ -16,38 +18,38 @@ The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible visi
 
 ---
 
-## 🧩 SuperMate Harness System · 系统仓库
+## 🧩 What is SuperMate Harness System
 
-本仓库是 **SuperMate Harness System**（天人合一：云端灵感 + 本地可控 + 本地/云端工具统一应用），结构：
+A self-contained agent system built on DSH's *"everything is a plugin"* philosophy: **Skills** (the *how-to* layer) + **Plugins** (the *can-do* layer) freely composed and replaced. Downloading this repository gives you **both official deepseek-ai skills/plugins and SuperMate's original ones** — no extra fetching required.
 
 ```
 SuperMate Harness System
- ├── skills/Supermate/   → Skill 层（任务级）
- │    ├── Deepseek-eyes/          视觉 skill（Ollama）
- │    ├── MiniMax h3-video-producer/  本地完整视频生产
- │    ├── SKILL.md                 智能体身份（能力矩阵/插件调用协议/复盘模板）
- │    └── DSH Official/           官方基础技能（deepseek-ai，13 个，只选官方）
- └── plugins/           → 插件层（系统级）
-      ├── Supermate/             自研插件（规划中，核心增强闭源商业层）
-      ├── DSH Official/          官方插件（Apache-2.0 fork 拷贝，随仓库自带）
-      │    ├── packages/         官方插件源码（49 族）
+ ├── skills/Supermate/            → Skill layer (task-level: how-to)
+ │    ├── Deepseek-eyes/           👁️ vision skill (Ollama)
+ │    ├── MiniMax h3-video-producer/  🎬 local H3 video production
+ │    ├── SKILL.md                 🤖 agent identity (capability matrix / plugin protocol / review template)
+ │    └── DSH Official/            official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
+ └── plugins/                      → Plugin layer (system-level: can-do)
+      ├── Supermate/               in-house plugins (planned; core enhancements = closed-source commercial)
+      ├── DSH Official/            official plugins (deepseek-ai · 49 families · fork copy)
+      │    ├── packages/           official plugin source (ships with the repo)
       │    ├── README.md · NOTICE.md
-      └── README.md              插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
+      └── README.md                plugin catalog (model / memory / schedule / tools / sandbox / eval / UI)
 ```
 
-### Skill 层 · [skills/](skills/)
+### ✨ Original Skills
 
-| Skill | 能力 |
-|-------|------|
-| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 给文本模型长眼睛（Ollama 视觉） |
-| [**h3-video-producer**](skills/Supermate/MiniMax h3-video-producer/) | 本地 H3 完整视频生产（三模式/链式/合成） |
-| [**supermate**](skills/Supermate/) | 基于 DSH 插件结构的真智能体（身份+能力矩阵+复盘） |
+| Skill | What it does |
+|-------|--------------|
+| [**Deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 👁️ Give text models eyes — local vision (Ollama) / OpenAI-compatible vision API → structured text |
+| [**MiniMax h3-video-producer**](skills/Supermate/MiniMax%20h3-video-producer/) | 🎬 Local end-to-end H3 video production: storyboard → H3 prompts → segments → compose (3 modes) |
+| [**Supermate identity**](skills/Supermate/) | 🤖 Agent identity: capability matrix / plugin invocation protocol / review template (A4) |
 
-### 插件层 · [plugins/](plugins/)
-
-模型适配 / 记忆 / 调度 / 工具 / 沙箱 / 评测 / UI —— 详见 [plugins/README.md](plugins/README.md)。核心闭源商业层（高级调度/记忆治理/沙箱/评测实现）见《双许可说明.md》。
+**Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/Supermate/DSH Official](skills/Supermate/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
 
 ---
+
+## 👁️ Featured Skill · Give DeepSeek Eyes
 
 > **Image → vision model converts it to text → the text model "sees"**
 
@@ -106,6 +108,6 @@ Restart the DSH session — the agent automatically "opens its eyes" when it mee
 
 <div align="center">
 
-*Give DeepSeek Eyes · Built for the DeepSeek Harness (DSH) ecosystem — topic [`dsh-plugin`](https://github.com/topics/dsh-plugin)*
+*SuperMate Harness System · Built on the DeepSeek Harness (DSH) plugin ecosystem — topic [`dsh-plugin`](https://github.com/topics/dsh-plugin)*
 
 </div>
