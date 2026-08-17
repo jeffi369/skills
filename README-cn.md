@@ -14,7 +14,7 @@
 
 > **图片 → 视觉模型转成文字 → 文本模型"看见"**
 
-[**deepseek-eyes**](skills/deepseek-eyes/) 在 DeepSeek Harness 里给 DeepSeek（或任意文本模型）装上一双"眼睛"——截图、照片、插画、角色设定图、AI 生成图，统统变成模型能理解的结构化文字。
+[**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) 在 DeepSeek Harness 里给 DeepSeek（或任意文本模型）装上一双"眼睛"——截图、照片、插画、角色设定图、AI 生成图，统统变成模型能理解的结构化文字。
 
 </div>
 
@@ -34,15 +34,15 @@
 
 | 技能 | 功能 | 文档 |
 |---|---|---|
-| [**deepseek-eyes**](skills/deepseek-eyes/) | 协助文本 AI 模型做图片分析：图片 → 结构化中文描述 + 检索标签（本地 Ollama 或 OpenAI 兼容视觉 API） | [中文](skills/deepseek-eyes/README-cn.md) · [English](skills/deepseek-eyes/README-en.md) |
+| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 协助文本 AI 模型做图片分析：图片 → 结构化中文描述 + 检索标签（本地 Ollama 或 OpenAI 兼容视觉 API） | [中文](skills/Supermate/Deepseek-eyes/README-cn.md) · [English](skills/Supermate/Deepseek-eyes/README-en.md) |
 
 ### 架构
 
-![架构图](skills/deepseek-eyes/docs/architecture.png)
+![架构图](skills/Supermate/Deepseek-eyes/docs/architecture.png)
 
 ### 实测数据（RTX 5080 16GB）
 
-![性能对比](skills/deepseek-eyes/docs/benchmark.png)
+![性能对比](skills/Supermate/Deepseek-eyes/docs/benchmark.png)
 
 ---
 

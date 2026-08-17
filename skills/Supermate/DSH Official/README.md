@@ -1,7 +1,7 @@
 # 官方基础技能索引（dsh-skill · 只选官方）
 
 > 来源：**官方唯一** = [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)（DSH 框架本体）。
-> 本页仅整理官方技能的名称/功能/来源，供 SuperMate Harness System Skill 层对接与复用；不收录第三方。
+> 本目录完整收录官方技能（SKILL.md + 配套文件），名称/功能/来源见下表；不收录第三方。
 
 ## 官方技能（两组共 13 个）
 
@@ -39,5 +39,5 @@
 | 插件开发 | `cordis-plugin-development` · `editing-cordis-compositions` | 对齐官方 Cordis 插件生态 |
 
 ## 说明
-- 以上均为官方 DSH 框架内置技能（Apache 风格开源，见官方 LICENSE）。
+- 以上 13 个官方技能**已完整入库**（本目录子文件夹，含 SKILL.md 与配套文件），Apache-2.0 原样复制，归属声明见 [NOTICE.md](NOTICE.md)。
 - SuperMate 在其上做组装与增强；核心增强（调度/记忆治理/沙箱/评测实现）属闭源商业层。

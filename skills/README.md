@@ -7,21 +7,25 @@
 
 ```
 SuperMate Harness System
- ├── skills/   → Skill 层（任务级：技能/指令/流程清单）
- └── plugins/  → 插件层（系统级：模型/记忆/调度/工具/沙箱/评测/UI）
+ ├── skills/Supermate/           → Skill 层（任务级）
+ │    ├── Deepseek-eyes/           视觉 skill（Ollama）
+ │    ├── MiniMax h3-video-producer/  本地完整视频生产
+ │    ├── SKILL.md                 智能体身份（能力矩阵/插件调用协议/复盘模板）
+ │    └── DSH Official/           官方基础技能（deepseek-ai，13 个，只选官方）
+ └── plugins/           → 插件层（系统级）
+      ├── Supermate/             自研插件（规划中，核心增强闭源商业层）
+      ├── DSH Official/          官方基本插件索引（deepseek-ai）
+      └── README.md              插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
-
-## 官方基础技能索引
-[官方基础技能（deepseek-ai/deepseek-harness，只选官方）](official-dsh-skills.md)
 
 ## 技能清单（现状与规划）
 
 | 技能 | 现状 | 说明 |
 |------|------|------|
-| **deepseek-eyes** | ✅ 已发布 | 视觉 skill（Ollama）：看图/资产入库/提示词管理 |
-| **h3-video-producer** | ✅ 已发布 | 本地版完整视频生产（H3/Z-Image + 生成门禁） |
-| **supermate** | ✅ 已发布 | 智能体身份（能力矩阵/插件调用协议/复盘模板） |
-| **官方技能引用** | 📋 索引 | 见 official-dsh-skills.md，按需拷贝/复用 |
+| **Deepseek-eyes** | ✅ 已发布 | 视觉 skill（Ollama）：看图/资产入库/提示词管理 |
+| **MiniMax h3-video-producer** | ✅ 已发布 | 本地版完整视频生产（H3/Z-Image + 生成门禁） |
+| **Supermate 身份** | ✅ 已发布 | 智能体身份（能力矩阵/插件调用协议/复盘模板），见 [SKILL.md](SKILL.md) |
+| **DSH Official（官方 13 个）** | ✅ 已入库 | [DSH Official/README.md](DSH%20Official/README.md)，Apache-2.0 原样复制，见 [NOTICE](DSH%20Official/NOTICE.md) |
 
 ## 说明
 - Skill 资产 = SKILL.md + 参考文档/脚本/模板（任务级，可独立安装/替换）。

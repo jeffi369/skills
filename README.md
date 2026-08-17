@@ -22,17 +22,24 @@ The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible visi
 
 ```
 SuperMate Harness System
- ├── skills/   → Skill 层（任务级：技能/指令/流程清单）
- └── plugins/  → 插件层（系统级：模型/记忆/调度/工具/沙箱/评测/UI）
+ ├── skills/Supermate/   → Skill 层（任务级）
+ │    ├── Deepseek-eyes/          视觉 skill（Ollama）
+ │    ├── MiniMax h3-video-producer/  本地完整视频生产
+ │    ├── SKILL.md                 智能体身份（能力矩阵/插件调用协议/复盘模板）
+ │    └── DSH Official/           官方基础技能（deepseek-ai，13 个，只选官方）
+ └── plugins/           → 插件层（系统级）
+      ├── Supermate/             自研插件（规划中，核心增强闭源商业层）
+      ├── DSH Official/          官方基本插件索引（deepseek-ai）
+      └── README.md              插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 
 ### Skill 层 · [skills/](skills/)
 
 | Skill | 能力 |
 |-------|------|
-| [**deepseek-eyes**](skills/deepseek-eyes/) | 给文本模型长眼睛（Ollama 视觉） |
-| [**h3-video-producer**](skills/h3-video-producer/) | 本地 H3 完整视频生产（三模式/链式/合成） |
-| [**supermate**](skills/supermate/) | 基于 DSH 插件结构的真智能体（身份+能力矩阵+复盘） |
+| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 给文本模型长眼睛（Ollama 视觉） |
+| [**h3-video-producer**](skills/Supermate/MiniMax h3-video-producer/) | 本地 H3 完整视频生产（三模式/链式/合成） |
+| [**supermate**](skills/Supermate/) | 基于 DSH 插件结构的真智能体（身份+能力矩阵+复盘） |
 
 ### 插件层 · [plugins/](plugins/)
 
@@ -42,7 +49,7 @@ SuperMate Harness System
 
 > **Image → vision model converts it to text → the text model "sees"**
 
-[**deepseek-eyes**](skills/deepseek-eyes/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
+[**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
 
 </div>
 
@@ -62,15 +69,15 @@ Image / graphic file → Skill → local vision model or vision API → structur
 
 | Skill | What it does | Manuals |
 |---|---|---|
-| [**deepseek-eyes**](skills/deepseek-eyes/) | Image analysis for text AI models: image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/deepseek-eyes/README-en.md) · [中文](skills/deepseek-eyes/README-cn.md) |
+| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | Image analysis for text AI models: image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/Supermate/Deepseek-eyes/README-en.md) · [中文](skills/Supermate/Deepseek-eyes/README-cn.md) |
 
 ### Architecture
 
-![Architecture](skills/deepseek-eyes/docs/architecture-en.png)
+![Architecture](skills/Supermate/Deepseek-eyes/docs/architecture-en.png)
 
 ### Measured performance (RTX 5080 16GB)
 
-![Benchmark](skills/deepseek-eyes/docs/benchmark-en.png)
+![Benchmark](skills/Supermate/Deepseek-eyes/docs/benchmark-en.png)
 
 ---
 

@@ -9,11 +9,17 @@
 ```
 SuperMate Harness System
  ├── skills/   → Skill 层（任务级：技能/指令/流程清单）
- └── plugins/  → 插件层（系统级：模型/记忆/调度/工具/沙箱/评测/UI）
+ └── plugins/  → 插件层（系统级）
+      ├── Supermate/             自研插件（规划中，核心增强闭源商业层）
+      ├── DSH Official/          官方基本插件索引（deepseek-ai，只选官方）
+      └── README.md              插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 
 ## 官方插件索引
-[官方基本插件（deepseek-ai/deepseek-harness，只选官方）](official-dsh-plugins.md)
+[官方基本插件（deepseek-ai/deepseek-harness，只选官方）](DSH%20Official/README.md)
+
+## 自研插件目录
+[Supermate 自有插件（未来开发的插件放这里）](Supermate/README.md)
 
 ## 插件清单（现状与规划）
 
