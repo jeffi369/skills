@@ -29,7 +29,9 @@ SuperMate Harness System
  │    └── DSH Official/           官方基础技能（deepseek-ai，13 个，只选官方）
  └── plugins/           → 插件层（系统级）
       ├── Supermate/             自研插件（规划中，核心增强闭源商业层）
-      ├── DSH Official/          官方基本插件索引（deepseek-ai）
+      ├── DSH Official/          官方插件（Apache-2.0 fork 拷贝，随仓库自带）
+      │    ├── packages/         官方插件源码（49 族）
+      │    ├── README.md · NOTICE.md
       └── README.md              插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 

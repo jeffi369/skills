@@ -1,9 +1,10 @@
-# 官方基本插件索引（dsh-plugin · 只选官方）
+# 官方基本插件（dsh-plugin · fork 入库）
 
 > 来源：**官方唯一** = [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)（DSH 框架本体，`packages/` 内置核心模块）。
-> 本页仅整理官方插件的名称/功能/来源，供 SuperMate Harness System 插件层对接与复用；不收录第三方。
+> 本目录**已整包 fork 官方插件源码**（`packages/` 子目录，49 族，Apache-2.0），下载本仓库即自带官方插件；不收录第三方。
+> 归属声明与拷贝说明见 [NOTICE.md](NOTICE.md)。
 
-## 官方核心插件（packages/）
+## 官方核心插件（packages/，已入库）
 
 | 插件 | 功能 | 官方位置 |
 |------|------|----------|
@@ -23,6 +24,8 @@
 | `subagent` | 子智能体 | packages/subagent |
 | `terminal` / `web` / `ui` | 终端/网页/界面 | packages/terminal · web · interaction |
 
+> 以上为核心索引；完整 49 族源码见 [packages/](packages/)。
+
 ## SuperMate 插件层 ↔ 官方插件对应
 
 | SuperMate 插件层 | 对应官方插件 |
@@ -35,5 +38,5 @@
 | 评测（规划中） | 官方无对应 → SuperMate 自研（闭源商业层） |
 
 ## 说明
-- 以上均为官方 DSH 框架内置模块（Apache 风格开源，见官方 LICENSE）。
+- 官方插件源码随仓库自带（Apache-2.0 fork 拷贝，见 NOTICE）；依赖用 `pnpm install` 按各包 package.json 还原。
 - SuperMate 在其上做组装与增强；核心增强（调度/记忆治理/沙箱/评测实现）属闭源商业层。
