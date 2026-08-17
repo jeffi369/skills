@@ -4,6 +4,7 @@ description: 用本地 ComfyUI 的 MiniMax H3 工作流从零生产完整视频�
 ---
 
 # h3-video-producer — 本地 H3 完整视频生产 Skill（pexo 本地版）
+[![MiniMax H3](https://img.shields.io/badge/MiniMax-H3-purple)](https://github.com/topics/minimax-h3)
 [![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 把 pexo 式"一句话需求 → 成品视频"的完整生产流程，改为**纯本地 MiniMax H3（ComfyUI 工作流）**驱动，全程不调用任何云端视频 API。
