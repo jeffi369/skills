@@ -25,10 +25,9 @@
 ```
 SuperMate Harness System
  ├── skills/                        → Skill 层（任务级：教"怎么做"）
- │    ├── Supermate/                原创技能
- │    │    ├── Deepseek-eyes/        👁️ 视觉 skill（Ollama）
- │    │    ├── MiniMax h3-video-producer/  🎬 本地 H3 完整视频生产
- │    │    └── SKILL.md              🤖 智能体身份（能力矩阵/插件调用协议/复盘模板）
+ │    ├── Deepseek-eyes/             👁️ 视觉 skill（Ollama）
+ │    ├── MiniMax h3-video-producer/ 🎬 本地 H3 完整视频生产
+ │    ├── Supermate/                 🤖 智能体身份（能力矩阵/插件调用协议/复盘模板）
  │    └── DSH Official/             官方技能（deepseek-ai · 13 个 · Apache-2.0 fork 拷贝）
  └── plugins/                        → 插件层（系统级：能"做什么"）
       ├── Supermate/                自研插件（规划中；核心增强=闭源商业层）
@@ -42,8 +41,8 @@ SuperMate Harness System
 
 | 技能 | 能力 |
 |------|------|
-| [**Deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 👁️ 给文本模型长眼睛——本地视觉（Ollama）/ OpenAI 兼容视觉 API → 结构化文字 |
-| [**MiniMax h3-video-producer**](skills/Supermate/MiniMax%20h3-video-producer/) | 🎬 本地端到端 H3 视频生产：文案分镜 → H3 提示词 → 逐段生成 → 合成（三模式） |
+| [**Deepseek-eyes**](skills/Deepseek-eyes/) | 👁️ 给文本模型长眼睛——本地视觉（Ollama）/ OpenAI 兼容视觉 API → 结构化文字 |
+| [**MiniMax h3-video-producer**](skills/MiniMax%20h3-video-producer/) | 🎬 本地端到端 H3 视频生产：文案分镜 → H3 提示词 → 逐段生成 → 合成（三模式） |
 | [**Supermate 身份**](skills/Supermate/) | 🤖 智能体身份：能力矩阵 / 插件调用协议 / 复盘模板（A4） |
 
 **官方内容随仓库自带**——官方 13 技能 + 官方 49 族插件（deepseek-ai，Apache-2.0，带 NOTICE 归属声明）：[skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/)。
@@ -54,7 +53,7 @@ SuperMate Harness System
 
 > **图片 → 视觉模型转成文字 → 文本模型"看见"**
 
-[**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) 在 DeepSeek Harness 里给 DeepSeek（或任意文本模型）装上一双"眼睛"——截图、照片、插画、角色设定图、AI 生成图，统统变成模型能理解的结构化文字。
+[**deepseek-eyes**](skills/Deepseek-eyes/) 在 DeepSeek Harness 里给 DeepSeek（或任意文本模型）装上一双"眼睛"——截图、照片、插画、角色设定图、AI 生成图，统统变成模型能理解的结构化文字。
 
 </div>
 
@@ -74,15 +73,15 @@ SuperMate Harness System
 
 | 技能 | 功能 | 文档 |
 |---|---|---|
-| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 协助文本 AI 模型做图片分析：图片 → 结构化中文描述 + 检索标签（本地 Ollama 或 OpenAI 兼容视觉 API） | [中文](skills/Supermate/Deepseek-eyes/README-cn.md) · [English](skills/Supermate/Deepseek-eyes/README-en.md) |
+| [**deepseek-eyes**](skills/Deepseek-eyes/) | 协助文本 AI 模型做图片分析：图片 → 结构化中文描述 + 检索标签（本地 Ollama 或 OpenAI 兼容视觉 API） | [中文](skills/Deepseek-eyes/README-cn.md) · [English](skills/Deepseek-eyes/README-en.md) |
 
 ### 架构
 
-![架构图](skills/Supermate/Deepseek-eyes/docs/architecture.png)
+![架构图](skills/Deepseek-eyes/docs/architecture.png)
 
 ### 实测数据（RTX 5080 16GB）
 
-![性能对比](skills/Supermate/Deepseek-eyes/docs/benchmark.png)
+![性能对比](skills/Deepseek-eyes/docs/benchmark.png)
 
 ---
 

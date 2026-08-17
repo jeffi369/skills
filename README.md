@@ -25,10 +25,9 @@ A self-contained agent system built on DSH's *"everything is a plugin"* philosop
 ```
 SuperMate Harness System
  ├── skills/                        → Skill layer (task-level: how-to)
- │    ├── Supermate/                 original skills
- │    │    ├── Deepseek-eyes/        👁️ vision skill (Ollama)
- │    │    ├── MiniMax h3-video-producer/  🎬 local H3 video production
- │    │    └── SKILL.md              🤖 agent identity (capability matrix / plugin protocol / review template)
+ │    ├── Deepseek-eyes/             👁️ vision skill (Ollama)
+ │    ├── MiniMax h3-video-producer/ 🎬 local H3 video production
+ │    ├── Supermate/                 🤖 agent identity (capability matrix / plugin protocol / review template)
  │    └── DSH Official/              official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
  └── plugins/                        → Plugin layer (system-level: can-do)
       ├── Supermate/                 in-house plugins (planned; core enhancements = closed-source commercial)
@@ -42,8 +41,8 @@ SuperMate Harness System
 
 | Skill | What it does |
 |-------|--------------|
-| [**Deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | 👁️ Give text models eyes — local vision (Ollama) / OpenAI-compatible vision API → structured text |
-| [**MiniMax h3-video-producer**](skills/Supermate/MiniMax%20h3-video-producer/) | 🎬 Local end-to-end H3 video production: storyboard → H3 prompts → segments → compose (3 modes) |
+| [**Deepseek-eyes**](skills/Deepseek-eyes/) | 👁️ Give text models eyes — local vision (Ollama) / OpenAI-compatible vision API → structured text |
+| [**MiniMax h3-video-producer**](skills/MiniMax%20h3-video-producer/) | 🎬 Local end-to-end H3 video production: storyboard → H3 prompts → segments → compose (3 modes) |
 | [**Supermate identity**](skills/Supermate/) | 🤖 Agent identity: capability matrix / plugin invocation protocol / review template (A4) |
 
 **Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
@@ -54,7 +53,7 @@ SuperMate Harness System
 
 > **Image → vision model converts it to text → the text model "sees"**
 
-[**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
+[**deepseek-eyes**](skills/Deepseek-eyes/) gives DeepSeek (or any text model) a pair of eyes inside DeepSeek Harness — screenshots, photos, charts, design drafts, illustrations, character sheets, AI-generated images all become structured text the model can reason about.
 
 </div>
 
@@ -74,15 +73,15 @@ Image / graphic file → Skill → local vision model or vision API → structur
 
 | Skill | What it does | Manuals |
 |---|---|---|
-| [**deepseek-eyes**](skills/Supermate/Deepseek-eyes/) | Image analysis for text AI models: image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/Supermate/Deepseek-eyes/README-en.md) · [中文](skills/Supermate/Deepseek-eyes/README-cn.md) |
+| [**deepseek-eyes**](skills/Deepseek-eyes/) | Image analysis for text AI models: image → structured description + retrieval tags. Local Ollama or OpenAI-compatible vision API. | [English](skills/Deepseek-eyes/README-en.md) · [中文](skills/Deepseek-eyes/README-cn.md) |
 
 ### Architecture
 
-![Architecture](skills/Supermate/Deepseek-eyes/docs/architecture-en.png)
+![Architecture](skills/Deepseek-eyes/docs/architecture-en.png)
 
 ### Measured performance (RTX 5080 16GB)
 
-![Benchmark](skills/Supermate/Deepseek-eyes/docs/benchmark-en.png)
+![Benchmark](skills/Deepseek-eyes/docs/benchmark-en.png)
 
 ---
 

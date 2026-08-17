@@ -28,4 +28,4 @@
 ## 使用约定
 
 - 本目录内容遵循上游 Apache-2.0；修改/再分发请保留本 NOTICE 与上游版权声明。
-- 与 SuperMate 自研技能（`skills/Supermate/` 其余子目录）的边界：自研部分 Apache-2.0 开源，核心商业增强不在此仓库。
+- 与 SuperMate 自研技能（`skills/` 下 Deepseek-eyes / MiniMax h3-video-producer / Supermate 身份）的边界：自研部分 Apache-2.0 开源，核心商业增强不在此仓库。

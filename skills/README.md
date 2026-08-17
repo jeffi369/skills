@@ -8,15 +8,14 @@
 ```
 SuperMate Harness System
  ├── skills/                        → Skill 层（任务级）
- │    ├── Supermate/                原创技能
- │    │    ├── Deepseek-eyes/       视觉 skill（Ollama）
- │    │    ├── MiniMax h3-video-producer/  本地完整视频生产
- │    │    └── SKILL.md             智能体身份（能力矩阵/插件调用协议/复盘模板）
- │    └── DSH Official/             官方基础技能（deepseek-ai，13 个，只选官方）
+ │    ├── Deepseek-eyes/             视觉 skill（Ollama）
+ │    ├── MiniMax h3-video-producer/  本地完整视频生产
+ │    ├── Supermate/                 智能体身份（能力矩阵/插件调用协议/复盘模板）
+ │    └── DSH Official/              官方基础技能（deepseek-ai，13 个，只选官方）
  └── plugins/                        → 插件层（系统级）
-      ├── Supermate/                自研插件（规划中，核心增强闭源商业层）
-      ├── DSH Official/             官方基本插件（deepseek-ai，49 族，fork 拷贝）
-      └── README.md                 插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
+      ├── Supermate/                 自研插件（规划中，核心增强闭源商业层）
+      ├── DSH Official/              官方基本插件（deepseek-ai，49 族，fork 拷贝）
+      └── README.md                  插件清单（模型/记忆/调度/工具/沙箱/评测/UI）
 ```
 
 ## 技能清单（现状与规划）
