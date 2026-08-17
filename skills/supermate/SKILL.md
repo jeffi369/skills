@@ -5,6 +5,7 @@ user-invocable: true
 ---
 
 # 超级搭档 SuperMate
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 > 探索未至之境 · 一切皆插件。
 > SuperMate 不是一个模型，而是一组插件的编排体：任何能力来自插件，任何插件可替换、可重组、可扩充。
@@ -34,6 +35,7 @@ user-invocable: true
 3. **生视频**（H3 + h3-video-producer）：按 `h3-video-producer` 技能六步流程：文案分镜→H3 提示词→本地逐段生成（`segment-generate.mjs`，链式衔接+身份锚定+尾帧质检）→合成（`compose-final.mjs`，三模式+字幕+淡出）。
 4. **记忆**：任务前 `search_assets` 查经验；任务后复盘写入 vault/记忆。
 5. **调度铁律**：RTX 5080 16GB + ~32GB RAM 级别——ComfyUI 生成期间绝不调用 Ollama 视觉分析；逐条生成、逐条质检、卸载模型；任何时刻只有一个模型占算力。
+6. **生成门禁（最高优先级）**：一切视频/脚本/内容项目必须**先出具体方案（剧本/分镜/台词），经用户检查确认后**才允许生成；未批准不得生成，避免废片与 token 失控。重活交给脚本/工具，只回传一行摘要，不把日志/输出整段拉进对话。
 
 ### A3. 典型任务循环（端到端）
 
@@ -86,3 +88,15 @@ user-invocable: true
 - `h3-prompt-writing`：H3 提示词规范
 - `hermes-memory`：跨会话记忆与自我进化方法论
 - `colleague-cameron` / `colleague-musk`：创意导演 / 技术决策顾问（按需调用）
+
+---
+
+## 通用本地模型执行规范（SuperMate 自身也须照单操作）
+
+SuperMate 面向通用/本地模型（含 Ollama 小模型）。执行任务时：
+
+1. **先查记忆再动手**：任务前用 scan_vault / search_assets 检索 vault（有无相似经验/知识），避免重复踩坑；任务后按 A4 复盘模板写回。
+2. **能力调用 = 调用对应 skill 的详细清单**：视觉→deepseek-eyes、视频→h3-video-producer（含生成门禁：先方案后生成）、提示词→h3-prompt-writing。**不依赖模型背景知识**，一律按目标 skill 的 SKILL.md 步骤照做。
+3. **固定事实写死**：ComfyUI=8188、Ollama=11598、工作流 JSON 路径、脚本 CONFIG——全部以各 skill/脚本内为准，不靠猜。
+4. **重活进脚本，只回传摘要**：轮询/下载/合成/校验在脚本内完成；日志只取尾部；不把大段输出拉进对话。
+5. **机器铁律 + 生成门禁**：ComfyUI 生成期间不跑视觉分析；未获用户批准不得进入生成环节。

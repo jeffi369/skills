@@ -1,4 +1,5 @@
 # 插件层（Plugins）— SuperMate Harness System
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 > 插件 = 提供"能力"的系统组件（可自由替换、灵活重组，一切皆插件）。
 > 与 Skill 层（教"怎么做"）不同，插件层提供"能做什么"的执行能力。

@@ -1,4 +1,5 @@
 # deepseek-eyes
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 ## 主题：协助文本 AI 模型做图片分析——给 DeepSeek Harness 里的文本模型长眼睛
 

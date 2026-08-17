@@ -1,4 +1,5 @@
 # deepseek-eyes
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 ## Theme: Image analysis for text AI models — Give Text Models Eyes in DeepSeek Harness
 

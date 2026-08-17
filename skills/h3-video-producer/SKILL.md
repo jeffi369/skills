@@ -4,6 +4,7 @@ description: 用本地 ComfyUI 的 MiniMax H3 工作流从零生产完整视频�
 ---
 
 # h3-video-producer — 本地 H3 完整视频生产 Skill（pexo 本地版）
+[![DSH Plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
 
 把 pexo 式"一句话需求 → 成品视频"的完整生产流程，改为**纯本地 MiniMax H3（ComfyUI 工作流）**驱动，全程不调用任何云端视频 API。
 
@@ -16,9 +17,27 @@ description: 用本地 ComfyUI 的 MiniMax H3 工作流从零生产完整视频�
 
 ## 生产流程（六步）
 
+### ⛔ 生成门禁（最高优先级，先于一切步骤）
+**所有视频项目必须先出具体方案（剧本/分镜/台词逐字稿），提交用户检查确认；用户明确批准后，才允许进入任何生成环节（H3/Z-Image/合成）。未批准不得生成。**
+理由：未经确认直接生成 = 废片成堆 + 时间与 token 成本失控。
+- 交付方案时：只给分镜表 + 台词 + 素材清单 + 时长（简版，不展开长篇）。
+- 用户批准后才执行第 3 步及之后。
+- 重活（轮询/日志/下载/合成/校验）一律脚本内完成，只回传一行摘要，不把大段日志/输出拉进对话。
+
 ### 1. 文案与分镜
 - 依据用户需求写口播稿（语速按需，参考 270-300 字/分钟；冷静干货/活泼均可，写进提示词）。
 - 用 `references/storyboard-template.md` 把视频切成块（开场/正文/结尾），每块标注：模式、时长、主画面素材、台词。
+
+## 通用本地模型执行规范（任何模型照单操作，勿依赖模型背景知识）
+
+本技能面向通用/本地模型（含 Ollama 等小模型）设计。执行时严格照抄以下清单，按顺序做，不跳步：
+
+1. **固定事实（写死，不靠猜）**：ComfyUI = `http://127.0.0.1:8188`；工作流 JSON、角色肖像、素材 PNG 的具体路径一律见各脚本顶部 CONFIG；脚本用 `node <文件>.mjs` 运行。
+2. **执行顺序（固定 8 步）**：
+   ① 出方案（分镜表+台词逐字+素材+时长）→ ② 提交用户，**确认后才继续** → ③ 写提示词到 `prompts/<seg>.txt`（台词用 `<d>[Chinese]...` 逐字保留）→ ④ 编辑 `references/segment-generate.mjs` 的 CONFIG（segments/prompts 目录/portrait）→ ⑤ `node segment-generate.mjs` → ⑥ 编辑 `references/compose-final.mjs` 的 CONFIG（blocks/dialogue/highlight）→ ⑦ `node compose-final.mjs` → ⑧ `ffprobe` 校验成片时长与音视频流。
+3. **每步后校验点**：提示词内台词与 dialogue/ 逐字一致；每段 `segments/<seg>/<seg>.mp4` 存在且含 `qa-pass.txt`；成片时长 ≈ 各块时长之和 ±0.5s；音轨存在（aac）。
+4. **出错处理**：段失败 → 看项目根 `run.log` 尾部定位；ComfyUI 不可达 → 重启服务再试；卡死超时 → 按 45 分钟上限报错并停；**生成门禁未获批准 → 不得进入任何生成**。
+5. **机器铁律**：ComfyUI 生成期间不跑 Ollama 视觉分析；视觉分析只在队列空闲时进行并随后卸载模型；一切重活（轮询/下载/合成/校验）由脚本完成，只回传一行摘要。
 - 分镜时长规则：开场 3-6s 全屏；正文普通讲解 6-9s；图表/原理特写 7-10s 纯画外音；结尾 3s 全屏。**禁止统一强制 10s**。
 
 ### 2. H3 分段提示词
