@@ -16,15 +16,27 @@ The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible visi
 
 ---
 
-## 🧩 SuperMate Harness 系统 · 技能库
+## 🧩 SuperMate Harness System · 系统仓库
 
-本仓库是 **SuperMate Harness 系统**（天人合一：云端灵感 + 本地可控 + 本地/云端工具统一应用）的技能库：
+本仓库是 **SuperMate Harness System**（天人合一：云端灵感 + 本地可控 + 本地/云端工具统一应用），结构：
+
+```
+SuperMate Harness System
+ ├── skills/   → Skill 层（任务级：技能/指令/流程清单）
+ └── plugins/  → 插件层（系统级：模型/记忆/调度/工具/沙箱/评测/UI）
+```
+
+### Skill 层 · [skills/](skills/)
 
 | Skill | 能力 |
 |-------|------|
 | [**deepseek-eyes**](skills/deepseek-eyes/) | 给文本模型长眼睛（Ollama 视觉） |
 | [**h3-video-producer**](skills/h3-video-producer/) | 本地 H3 完整视频生产（三模式/链式/合成） |
 | [**supermate**](skills/supermate/) | 基于 DSH 插件结构的真智能体（身份+能力矩阵+复盘） |
+
+### 插件层 · [plugins/](plugins/)
+
+模型适配 / 记忆 / 调度 / 工具 / 沙箱 / 评测 / UI —— 详见 [plugins/README.md](plugins/README.md)。核心闭源商业层（高级调度/记忆治理/沙箱/评测实现）见《双许可说明.md》。
 
 ---
 
