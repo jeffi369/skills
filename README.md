@@ -2,6 +2,8 @@
 
 # 👁️ Give DeepSeek Eyes
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 **Give text models eyes — a [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) Skill that lets DeepSeek read images and graphic files.**
 
 The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible vision API** to convert images and graphic files into structured text, so DeepSeek can read and reason about them. Organized per the [Agent Skills standard](https://agentskills.io).
@@ -9,6 +11,20 @@ The Skill calls a **local vision model (Ollama)** or an **OpenAI-compatible visi
 **中文版**：[README-cn.md](README-cn.md) · 中文说明
 
 **DSH Ecosystem** · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · topic [`dsh-plugin`](https://github.com/topics/dsh-plugin) · [Agent Skills](https://agentskills.io)
+
+**License** · [Apache-2.0](LICENSE)（含专利授权条款）· 双许可边界见 [双许可说明](双许可说明.md)（核心闭源商业层：调度/记忆治理/沙箱/评测）
+
+---
+
+## 🧩 SuperMate Harness 系统 · 技能库
+
+本仓库是 **SuperMate Harness 系统**（天人合一：云端灵感 + 本地可控 + 本地/云端工具统一应用）的技能库：
+
+| Skill | 能力 |
+|-------|------|
+| [**deepseek-eyes**](skills/deepseek-eyes/) | 给文本模型长眼睛（Ollama 视觉） |
+| [**h3-video-producer**](skills/h3-video-producer/) | 本地 H3 完整视频生产（三模式/链式/合成） |
+| [**supermate**](skills/supermate/) | 基于 DSH 插件结构的真智能体（身份+能力矩阵+复盘） |
 
 ---
 
