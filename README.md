@@ -26,6 +26,10 @@ A self-contained agent system built on DSH's *"everything is a plugin"* philosop
 SuperMate Harness System
  ├── skills/                        → Skill layer (task-level: how-to)
  │    ├── Deepseek-eyes/             👁️ vision skill (Ollama)
+ │    ├── quark-qwen-vision/         🖼️ Quark-browser vision + image gen (Qwen, zero API key)
+ │    ├── doubao-creator/            🎬 Doubao text-to-video (Seedance 2.0, zero API key)
+ │    ├── rh-workflow/               🎥 RunningHub cloud H3 workflow API
+ │    ├── rh-workflow-9b/            📋 9B RH executor charter
  │    ├── MiniMax h3-video-producer/
  │    ├── Supermate/
  │    └── DSH Official/              official skills (deepseek-ai · 13 · Apache-2.0 fork copy)
@@ -42,6 +46,10 @@ SuperMate Harness System
 | Skill | What it does |
 |-------|--------------|
 | [**Deepseek-eyes**](skills/Deepseek-eyes/) | 👁️ Give text models eyes — local vision (Ollama) / OpenAI-compatible vision API → structured text |
+| [**quark-qwen-vision**](skills/quark-qwen-vision/) | 🖼️ **Zero API key vision + image gen** — drive Quark browser's built-in Qwen (qwen-vl + Qwen-Image 2.0) via CDP web automation: image analysis, prompt reverse-engineering, text-to-image |
+| [**doubao-creator**](skills/doubao-creator/) | 🎬 **Zero API key text-to-video** — drive Doubao web (Seedance 2.0) via CDP: image analysis, 10s vertical video ads, portrait-protection workaround (describe-then-anchor) |
+
+> **🔥 Zero-API-key multi-model matrix**: DeepSeek (brain) + Qwen (vision/image-gen via Quark) + Doubao (video via Seedance) + RunningHub H3 (cloud video) — all driven by CDP web automation, no Ollama, no API keys, no GPU needed.
 
 **Official content ships with this repo** — 13 official skills & 49 official plugin families (deepseek-ai, Apache-2.0, NOTICE-attributed): [skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/).
 

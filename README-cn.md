@@ -26,6 +26,10 @@
 SuperMate Harness System
  ├── skills/                        → Skill 层（任务级：教"怎么做"）
  │    ├── Deepseek-eyes/             👁️ 视觉 skill（Ollama）
+ │    ├── quark-qwen-vision/         🖼️ 夸克浏览器视觉+生图（千问，零 API Key）
+ │    ├── doubao-creator/            🎬 豆包文生视频（Seedance 2.0，零 API Key）
+ │    ├── rh-workflow/               🎥 RunningHub 云端 H3 工作流 API
+ │    ├── rh-workflow-9b/            📋 9B RH 执行宪章
  │    ├── MiniMax h3-video-producer/
  │    ├── Supermate/
  │    └── DSH Official/             官方技能（deepseek-ai · 13 个 · Apache-2.0 fork 拷贝）
@@ -42,6 +46,10 @@ SuperMate Harness System
 | 技能 | 能力 |
 |------|------|
 | [**Deepseek-eyes**](skills/Deepseek-eyes/) | 👁️ 给文本模型长眼睛——本地视觉（Ollama）/ OpenAI 兼容视觉 API → 结构化文字 |
+| [**quark-qwen-vision**](skills/quark-qwen-vision/) | 🖼️ **零 API Key 视觉+生图**——CDP 网页操作驱动夸克浏览器内置千问（qwen-vl + Qwen-Image 2.0）：识图、反推提示词、文生图 |
+| [**doubao-creator**](skills/doubao-creator/) | 🎬 **零 API Key 文生视频**——CDP 驱动豆包网页版（Seedance 2.0）：识图、10s 竖屏广告视频、肖像保护破局法（先反推再锚定）|
+
+> **🔥 零 API Key 多模型矩阵**：DeepSeek（主脑）+ 千问（视觉/生图，走夸克）+ 豆包（视频，走 Seedance）+ RunningHub H3（云端视频）——全部 CDP 网页自动化驱动，无需 Ollama、无需 API Key、无需 GPU。
 
 **官方内容随仓库自带**——官方 13 技能 + 官方 49 族插件（deepseek-ai，Apache-2.0，带 NOTICE 归属声明）：[skills/DSH Official](skills/DSH%20Official/) · [plugins/DSH Official](plugins/DSH%20Official/)。
 
