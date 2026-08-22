@@ -31,6 +31,36 @@ node "<skill 目录>\scripts\qwen-vision.js" <图片路径> ["问题"]
 node "D:\AI\Dsh_Data\skills\quark-qwen-vision\scripts\qwen-vision.js" "D:\Download\包1.png" "这张图是什么？反推提示词"
 ```
 
+## 文生图（Qwen-Image 2.0）
+
+千问对话**原生支持文生图**（Qwen-Image 2.0 模型），已封装 `gen-image.js`：
+
+```powershell
+node "<skill 目录>\scripts\gen-image.js" "英文提示词" [输出目录]
+```
+
+- 流程：发送提示词 → 千问调用 Qwen-Image 2.0 生成 → 脚本自动轮询抓取图片 URL → 下载保存到输出目录（默认 `generated/`）
+- 千问会附带给出多条**迭代建议**（背景/构图/风格调整），可直接回传继续优化
+- 实测：赛博朋克机械背包、新中式国学海报均生成成功（多张高清 + 预览图）
+
+## 视频输入（不支持）
+
+千问对话页**仅接受图片输入**——模拟粘贴 mp4 会被忽略（上传栏无反应）。视频分析需走 `ffmpeg` 抽帧后逐帧/拼图再喂给千问。
+
+## 实战闭环（推荐工作流）
+
+```
+看图（qwen-vision.js）→ 反推提示词 → 千问优化 → 文生图（gen-image.js）/ 云端视频（RH 工作流）
+```
+
+## 脚本清单
+
+| 脚本 | 用途 |
+|---|---|
+| `qwen-vision.js` | 看图分析 / 反推提示词（主工具）|
+| `gen-image.js` | 文生图（Qwen-Image 2.0）|
+| `cdp.js` | CDP 客户端库（其它脚本共用）|
+
 ## 工作原理（网页操作四步）
 
 ```
@@ -58,5 +88,5 @@ node "D:\AI\Dsh_Data\skills\quark-qwen-vision\scripts\qwen-vision.js" "D:\Downlo
 
 ## 关联
 
-- 工具脚本目录：`D:\AI\Harness\quark-cdp\`（cdp.js 客户端 / send-chat.js 文字对话 / qwen-vision.js 看图 / 诊断脚本）
-- 本机文字视觉备选：`deepseek-eyes` skill 的 openai 通道（需 DashScope Key，未配置）
+- 工具脚本目录：`D:\AI\Harness\quark-cdp\`（cdp.js 客户端 / send-chat.js 文字对话 / qwen-vision.js 看图 / gen-image.js 生图 / video-analyze.js 视频诊断）
+- 本机视觉备选：`deepseek-eyes` skill 的 openai 通道（需 DashScope Key，未配置）
