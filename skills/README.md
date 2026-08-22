@@ -26,6 +26,8 @@ SuperMate Harness System
 | **MiniMax h3-video-producer** | ✅ 已发布 | 本地版完整视频生产（H3/Z-Image + 生成门禁） |
 | **Supermate 身份** | ✅ 已发布 | 智能体身份（能力矩阵/插件调用协议/复盘模板），见 [SKILL.md](SKILL.md) |
 | **DSH Official（官方 13 个）** | ✅ 已入库 | [DSH Official/README.md](DSH%20Official/README.md)，Apache-2.0 原样复制，见 [NOTICE](DSH%20Official/NOTICE.md) |
+| **rh-workflow** | ✅ 已发布 | RunningHub 工作流 API（MiniMax H3 I2V/Ref2VA/T8）：客户端+CLI+契约+铁律，见 [rh-workflow/SKILL.md](rh-workflow/SKILL.md) |
+| **rh-workflow-9b** | ✅ 已发布 | 9B 无漂移执行宪章（RH 通道执行器行为准则），见 [rh-workflow-9b/SKILL.md](rh-workflow-9b/SKILL.md) |
 
 ## 说明
 - Skill 资产 = SKILL.md + 参考文档/脚本/模板（任务级，可独立安装/替换）。
