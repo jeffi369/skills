@@ -1,6 +1,6 @@
 ---
 name: deepseek-eyes
-description: deepseek-eyes：协助文本 AI 模型做图片分析——给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when DSH needs to analyze an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image): first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags that get injected into the text model's context. Prerequisite: the user must have either a local vision model or a vision API key.
+description: deepseek-eyes：协助文本 AI 模型做图片分析——给 DeepSeek Harness（DSH）里的文本模型长眼睛。Use when DSH needs to analyze an image file or a folder of images (asset entry, prompt management, screenshot understanding, image comparison, OCR-in-image)：first preprocess (convert any non-PNG/JPEG format such as WebP to PNG; downscale long edge to at most 1080px), then call a vision model — a local Ollama model (think off) OR an OpenAI-compatible vision API — and return a structured Chinese description plus retrieval tags that get injected into the text model's context. Prerequisite：the user must have either a local vision model or a vision API key.
 ---
 
 # 图片分析（在 DSH 里给文本模型长眼睛）
